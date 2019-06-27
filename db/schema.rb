@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_211614) do
+ActiveRecord::Schema.define(version: 2019_06_27_212625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(version: 2019_06_27_211614) do
     t.bigint "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tag_id"
     t.index ["message_id"], name: "index_taggings_on_message_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -48,4 +50,5 @@ ActiveRecord::Schema.define(version: 2019_06_27_211614) do
 
   add_foreign_key "messages", "conversations"
   add_foreign_key "taggings", "messages"
+  add_foreign_key "taggings", "tags"
 end
