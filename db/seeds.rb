@@ -14,7 +14,8 @@ file_path = './task_1.json'
 raw = File.read(file_path)
 mails_json = JSON.parse(raw)
 mails = []
-mails_json.each do |mail|
+puts "seeding the converations"
+mails_json.first(100).each do |mail|
   convo ={
     price_of_reservation: mail["price_of_reservation"].to_f,
     numbers_of_guests: mail["numbers_of_guests"].to_i,
@@ -40,8 +41,8 @@ analyzer.threshold = 0.2
 
 #raw = File.read(file_path)
 #mails_json = JSON.parse(raw)
-
-mails_json.each do |mail|
+puts "seeding the messages"
+mails_json.first(100).each do |mail|
   conversation = Conversation.where(marker: mail["conversation_id"])
   if !conversation.empty?
     conversation = conversation[0]
@@ -53,7 +54,16 @@ mails_json.each do |mail|
   end
 end
 
-
+puts "seeding the tags"
 CSV.foreach('tags.csv') do |row|
   Tag.create!(tag:row[0])
+end
+puts "seeding the taggings"
+Message.all.each do |msg|
+  Tag.all.each do |t|
+    if msg.message.downcase.gsub(/[^0-9a-z ]/i, '').include?(t.tag)
+      Tagging.create!(message_id:msg.id,tag_id:t.id)
+    end
+  end
+  puts "done looping for message #{msg.id}"
 end
