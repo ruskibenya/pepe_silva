@@ -35,7 +35,7 @@
 }
 
 .header {
-  margin: 20px 0 20px 0;
+  padding: 20px 0 0px 0;
 }
 
 .tabs-underlined {
@@ -44,10 +44,9 @@
 }
 
 .tabs-underlined .tab-underlined {
-  color: black;
+  color: #e9e7e0;
   padding: 8px;
   margin: 8px 16px;
-  opacity: .4;
   cursor: pointer;
   text-decoration: none;
   border-bottom: 4px solid transparent;
@@ -55,5 +54,15 @@
 
 .tabs-underlined .tab-underlined.active {
   opacity: 1;
-  border-bottom: 3px solid #555555;
+  border-bottom: 3px solid #e9e7e0;
+}
+
+
+.inbox-icon{
+  width: 40px;
+  // opacity: 1;
+}
+
+.blue{
+  background-color: #0073ae;
 }

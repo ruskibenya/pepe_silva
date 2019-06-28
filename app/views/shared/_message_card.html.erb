@@ -1,0 +1,7 @@
+  <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+    <div class="card-product-infos">
+      <h6><%= time_ago_in_words(message.conversation.message_received_at)  %> ago </h6>
+      <p><%= message.message.truncate(35, separator: ' ') %></p>
+    </div>
+  </div>
