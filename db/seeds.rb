@@ -11,6 +11,22 @@ require 'sentimental'
 
 file_path = './task_1.json'
 
+puts "destroying all taggings"
+Tagging.destroy_all
+
+puts "destroying all tags"
+Tag.destroy_all
+
+puts "destroying all messages"
+Message.destroy_all
+
+puts "destroying all conversations"
+Conversation.destroy_all
+
+
+
+
+
 raw = File.read(file_path)
 mails_json = JSON.parse(raw)
 mails = []

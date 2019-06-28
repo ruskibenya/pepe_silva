@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
   def home
-    @messages = Message.all
+    @messages = Message.get_all_sorted
     # @conversations = Conversation.all
     @test_message = Message.first
-    @positive_messages = @messages.where(sentiment: "positive")
-    @negative_messages = @messages.where(sentiment: "negative")
+    # raise
+    @positive_messages = Message.get_positives
+    @negative_messages = Message.get_negatives
+
   end
 end

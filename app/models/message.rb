@@ -33,6 +33,15 @@ class Message < ApplicationRecord
   # Note that the SQL is built by hand and therefore injection is possible,
   # however since we're declaring the priorities in a constant above it's
   # safe.
+  def sentiment_to_int
+    if self.sentiment == 'negative'
+      return 0
+    elsif self.sentiment == 'neutral'
+      return 1
+    else
+      return 2
+    end
+  end
   def count_tags
     Tagging.where(message_id:self.id).count
   end
@@ -43,14 +52,7 @@ class Message < ApplicationRecord
   end
 
   def self.get_all_sorted
-    negatives = Message.get_negatives.sort{|a,b| [a,a.count_tags,a.get_price]<=>[b,b.count_tags,b.get_price]}
-    neutrals = Message.get_neutrals.sort{|a,b| [a,a.count_tags,a.get_price]<=>[b,b.count_tags,b.get_price]}
-    positives = Message.get_positives.sort{|a,b| [a,a.count_tags,a.get_price]<=>[b,b.count_tags,b.get_price]}
-    all = []
-    all << negatives
-    all << neutrals
-    all << positives
-    return all
+    Message.all.sort{|a,b| [a,a.sentiment_to_int,a.count_tags,a.get_price]<=>[b,b.sentiment_to_int,b.count_tags,b.get_price]}
   end
 
 

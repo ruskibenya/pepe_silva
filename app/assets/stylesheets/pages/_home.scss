@@ -3,7 +3,7 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 10px 0 10px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
 }
@@ -33,7 +33,15 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
-
+.negative {
+  background-color: #faeae8;
+}
+.neutral {
+  background-color: #f7f7f7;
+}
+.positive {
+  background-color: #eef5e4;
+}
 .header {
   padding: 20px 0 0px 0;
 }
