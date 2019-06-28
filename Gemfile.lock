@@ -141,6 +141,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sentimental (1.5.0)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -192,6 +193,7 @@ DEPENDENCIES
   rails (= 5.2.2.1)
   redis
   sassc-rails
+  sentimental
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
