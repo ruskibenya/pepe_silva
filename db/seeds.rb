@@ -18,8 +18,8 @@ mails_json.each do |mail|
   convo ={
     price_of_reservation: mail["price_of_reservation"].to_f,
     numbers_of_guests: mail["numbers_of_guests"].to_i,
-    days_until_check_out: mail["days_until_check_out"].to_i,
-    days_until_check_in: mail["days_until_check_in"].to_i,
+    days_until_check_out: mail["days_until_check_in"].to_i,
+    days_until_check_in: mail["days_until_check_out"].to_i,
     marker: mail["conversation_id"]
     }
   mails << convo
@@ -48,7 +48,7 @@ mails_json.each do |mail|
     sentiment = analyzer.sentiment mail["message"].to_s
     @message = Message.new(message: mail["message"],sentiment: sentiment)
     @message.conversation_id= conversation.id
-    p @message
+    #p @message
     @message.save!
   end
 end
