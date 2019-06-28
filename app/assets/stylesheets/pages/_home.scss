@@ -6,6 +6,7 @@
   box-shadow: 10px 0 10px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .card-product img {
@@ -74,3 +75,9 @@
 .blue{
   background-color: #0073ae;
 }
+
+.price{
+  position: absolute;
+  right: 2px;
+}
+

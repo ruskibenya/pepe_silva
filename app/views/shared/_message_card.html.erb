@@ -1,7 +1,21 @@
   <div class="card-product <%= message.sentiment %>">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+    <img src= <%= image_path 'gil.jpg' %>>
     <div class="card-product-infos">
       <p><%= time_ago_in_words(message.conversation.message_received_at)  %> ago </p>
-      <h6><%= message.message.truncate(75, separator: ' ') %></h6>
+      <div class="row">
+        <div class="col-10">
+          <h6><%= message.message.truncate(75, separator: ' ') %></h6>
+        </div>
+        <div class="col-2">
+          <% if message.is_checked_in? %>
+            ✅
+          <% elsif message.is_pre_checked?  %>
+            💼
+          <% elsif message.is_checked_out? %>
+            ❌
+          <% end %>
+          <span class="price">$<%= message.conversation.price_of_reservation.round(2) %></span>
+        </div>
+      </div>
     </div>
   </div>

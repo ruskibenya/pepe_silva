@@ -27,6 +27,19 @@ class Message < ApplicationRecord
       end
     end
   end
+  def is_checked_in?
+    c1 = Conversation.where(id:self.conversation_id)[0]
+    return c1.days_until_check_in<=0 && c1.days_until_check_out>0
+  end
+  def is_checked_out?
+    c1 = Conversation.where(id:self.conversation_id)[0]
+    return c1.days_until_check_in<=0 && c1.days_until_check_out<=0
+  end
+  def is_pre_checked?
+    c1 = Conversation.where(id:self.conversation_id)[0]
+    return c1.days_until_check_in>0 && c1.days_until_check_out>0
+  end
+
   SENTIMENTS_ORDERED = ['negative', 'neutral', 'positive']
 
   # Returns a case statement for ordering by a particular set of strings
