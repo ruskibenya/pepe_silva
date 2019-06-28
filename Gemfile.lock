@@ -193,7 +193,7 @@ DEPENDENCIES
   rails (= 5.2.2.1)
   redis
   sassc-rails
-  sentimental (~> 1.5)
+  sentimental
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
