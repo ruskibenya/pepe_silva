@@ -21,7 +21,8 @@ mails_json.first(100).each do |mail|
     numbers_of_guests: mail["number_of_guests"].to_i,
     days_until_check_out: mail["days_until_check_in"].to_i,
     days_until_check_in: mail["days_until_check_out"].to_i,
-    marker: mail["conversation_id"]
+    marker: mail["conversation_id"],
+    message_received_at: mail["message_received_at"]
     }
   mails << convo
 end
